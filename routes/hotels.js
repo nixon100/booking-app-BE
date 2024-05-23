@@ -8,6 +8,7 @@ const {
   deleteHotel,
   getHotel,
   getHotels,
+  countByCity
 } = require("../controllers/hotel.js");
 
 //CREATE
@@ -18,6 +19,8 @@ router.put("/:id", verifyAdmin, updateHotel);
 router.delete("/:id", verifyAdmin, deleteHotel);
 //GET
 router.get("/find/:id", getHotel);
+router.get("/countByCity", countByCity);
+// router.get("/countByType", countByType);
 //GET ALL
 
 module.exports = router;
