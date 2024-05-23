@@ -1,5 +1,7 @@
 const express = require("express");
 const router = express.Router();
+const {verifyAdmin} = require("../utils/verifyToken.js");
+
 const {
   createHotel,
   updateHotel,
@@ -9,14 +11,13 @@ const {
 } = require("../controllers/hotel.js");
 
 //CREATE
-router.post("/", createHotel);
+router.post("/", verifyAdmin, createHotel);
 //UPDATE
-router.put("/:id", updateHotel);
+router.put("/:id", verifyAdmin, updateHotel);
 //DELETE
-router.delete("/:id", deleteHotel);
+router.delete("/:id", verifyAdmin, deleteHotel);
 //GET
-router.get("/:id", getHotel);
+router.get("/find/:id", getHotel);
 //GET ALL
-router.get("/", getHotels);
 
 module.exports = router;
